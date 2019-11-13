@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"log"
 	"github.com/REST_API/api/models"
+	_ "github.com/jinzhu/gorm/dialects/mysql"    //mysql database driver
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 type Server struct {
@@ -45,5 +47,5 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 func (server *Server) Run(addr string) {
 	fmt.Println("Listening to port 9080")
 	log.Fatal(http.ListenAndServe(addr, server.Router))
-	
+
 }
